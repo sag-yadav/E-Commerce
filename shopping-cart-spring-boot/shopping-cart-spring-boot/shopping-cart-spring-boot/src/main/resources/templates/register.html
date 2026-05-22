@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{base::layout(~{::section})}">
+<head>
+<meta charset="ISO-8859-1">
+<title>Register</title>
+</head>
+<body>
+	<section>
+		<div class="container mt-5 p-2">
+			<div class="row offset-3">
+		
+				<div class="col-md-7 p-2">
+					<div class="card shadow p-2 mb-2 bg-body-tertiary rounded">
+						<div class="card-header text-center">
+							<p class="fs-4 text-center">Register Here</p>
+							<th:block th:if="${session.succMsg}">
+								<p class="text-success fw-bold">[[${session.succMsg}]]</p>
+								<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+							</th:block>
+
+							<th:block th:if="${session.errorMsg}">
+								<p class="text-danger fw-bold">[[${session.errorMsg}]]</p>
+								<th:block th:text="${@commnServiceImpl.removeSessionMessage()}"></th:block>
+							</th:block>
+						</div>
+						<div class="card-body">
+							<form action="/saveUser" enctype="multipart/form-data" id="userRegister" novalidate
+								method="post">
+								<div class="row">
+									<div class="col">
+										<label class="form-label">Name </label> <input required
+											class="form-control" name="name" type="text" placeholder="Name..">
+									</div>
+
+									<div class="col">
+										<label class="form-label">Phone Number</label> <input
+											required class="form-control" name="mobileNumber"
+											type="number" placeholder="Phone Number..">
+									</div>
+
+								</div>
+
+								<div class="mb-3">
+									<label class="form-label">Email</label> <input required
+										class="form-control" name="email" type="email" placeholder="Email..">
+								</div>
+
+
+								<div class="row">
+									<div class="col">
+										<label class="form-label">Address</label> <input required
+											class="form-control" name="address" type="text" placeholder="Address..">
+									</div>
+
+									<div class="col">
+										<label class="form-label">City</label> <input required
+											class="form-control" name="city" type="text" placeholder="City..">
+									</div>
+
+								</div>
+
+								<div class="row">
+									<div class="col">
+										<label class="form-label">State</label> <input required
+											class="form-control" name="state" type="text" placeholder="State..">
+									</div>
+
+									<div class="col">
+										<label class="form-label">Pincode</label> <input required
+											class="form-control" name="pincode" type="number" placeholder="Pin Code..">
+									</div>
+
+								</div>
+
+
+								<div class="row">
+									<div class="col">
+										<label class="form-label">Password</label> <input required
+											class="form-control" name="password" type="password" id="pass"
+											placeholder="Password">
+									</div>
+
+									<div class="col">
+										<label class="form-label">Confirm Password</label> <input
+											required class="form-control" name="confirmpassword"
+											type="password" placeholder="Confirm Password">
+									</div>
+
+								</div>
+
+
+
+								<div class="mb-3">
+									<label class="form-label">Profile Pic</label> <input
+										class="form-control" name="img" type="file">
+								</div>
+
+
+
+
+
+
+								<button type="submit"
+									class="btn bg-primary text-white col-md-12">Register</button>
+							</form>
+						</div>
+
+						<div class="card-footer text-center">
+
+							have an account ? <a href="/login" class="text-decoration-none">Login
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>
